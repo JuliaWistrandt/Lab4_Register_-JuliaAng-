@@ -7,10 +7,8 @@ namespace Register
         public delegate void CarShopStateHandler(string message);
         static void Main(string[] args)
         {
-            // OBS failed method appears: find document by it's Id didn't work at all
+            
             Register areg = new Register();
-
-       
 
             areg.AddADocument(new InvoiceFinance(653, 1, DateTime.Today, "sales_025"));
             areg.AddADocument(new InvoiceFinance(432, 2, DateTime.Today, "marketing"));
@@ -29,11 +27,11 @@ namespace Register
             //areg.AddADocument(new ASupplyAgreement(11, "Mondays", "30", new DateTime(2023, 3, 1, 7, 0, 0)));
             //areg.AddADocument(new ASupplyAgreement(006, "Sundays", "14", new DateTime(2023, 3, 1, 7, 0, 0)));
 
-            //this works
-            Console.WriteLine(areg.FindDoc(DateTime.Today));
+            
+            // Console.WriteLine(areg.FindDoc(DateTime.Today));
 
-            //failed logic
-            Console.WriteLine(areg.FindDoc(4)); //didn't work, how the heck to connect this Id to that id in the class, tested FirstOrDefault, Property with zero good result.
+            Console.WriteLine(areg.FindDoc(4));
+            Console.WriteLine(areg.FindDoc(11));
 
           
 

@@ -9,8 +9,6 @@ namespace Register
     internal class InvoiceFinance : Document
     {
         public int totalSumMonth;
-        public uint id;
-        public DateTime dateSigned;
         public string codeDepartment;
 
        

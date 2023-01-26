@@ -8,8 +8,7 @@ namespace Register
 {
     internal class EmployeeAgreement : Document
     {
-        public uint id;
-        public DateTime dateSigned;
+        
         public DateTime dateExpired;
         public string employeeName;
 

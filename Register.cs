@@ -16,46 +16,44 @@ namespace Register
 
         List<Document> docList = new List<Document>();
 
-        public void AddADocument(Document doc)
+        public string AddADocument(Document doc)
         {
-            if (docList.Count == maxLength)
-            {
-                throw new DataBaseException(message: "Oops, looks like we are running out of memory space.\nPlease delete some documents from Register or try again later");
-            }
+            if (docList.Count >= maxLength) return "Oops, looks like we are running out of memory space.\nPlease delete some documents from Register or try again later";
             else
             {
                 docList.Add(doc);
-                Console.WriteLine($"the document was succesfully added\n");      
-            }
+                return $"The document was sucesfully added.\nFind the additional information below:\n\n" + doc.GetDetailedInfo();      
+            }      
 
         }
             
 
 
         public string FindDoc(uint findId)
-        {
+        {  
+            var temp = docList.FirstOrDefault(item => item.id == findId);
 
-            List<Document> results = docList.FindAll(item => item.id == findId);
-            StringBuilder sb = new StringBuilder();
-            foreach (var document in results)
-            {
-                sb.AppendLine(document.GetDetailedInfo());
-            }
-            return sb.ToString();
-
-
+            if (temp != null) return $"Here is teh document with id {findId} you were searching for.\nPlease find the additional information below:\n\n" + temp.GetDetailedInfo();
+            else return $"Oops, looks like there is no document with the particular Id {findId} in our register";
+               
         }
 
 
         public string FindDoc(DateTime findDate)
         {
             List<Document> temp = docList.FindAll(item => item.dateSigned == findDate);
-            StringBuilder sb = new StringBuilder();
-            foreach (var document in temp)
+            if (temp != null)
             {
-                sb.AppendLine(document.GetDetailedInfo());
+                StringBuilder sb = new StringBuilder();
+                foreach (var document in temp)
+                {
+                    sb.AppendLine($"Here is the list of all documents were added at {findDate}:");
+                    sb.AppendLine(document.GetDetailedInfo());
+                }
+                return sb.ToString();
+
             }
-            return sb.ToString();
+            else return $"Opps, looks like there is no document were added to Register at {findDate}";
 
         }
 
