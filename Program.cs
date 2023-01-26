@@ -28,7 +28,7 @@ namespace Register
             //areg.AddADocument(new ASupplyAgreement(006, "Sundays", "14", new DateTime(2023, 3, 1, 7, 0, 0)));
 
             
-            // Console.WriteLine(areg.FindDoc(DateTime.Today));
+            Console.WriteLine(areg.FindDoc(DateTime.Today));
 
             Console.WriteLine(areg.FindDoc(4));
             Console.WriteLine(areg.FindDoc(11));

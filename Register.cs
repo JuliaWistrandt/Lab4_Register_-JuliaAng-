@@ -33,7 +33,7 @@ namespace Register
         {  
             var temp = docList.FirstOrDefault(item => item.id == findId);
 
-            if (temp != null) return $"Here is teh document with id {findId} you were searching for.\nPlease find the additional information below:\n\n" + temp.GetDetailedInfo();
+            if (temp != null) return $"Here is the document with id {findId} you were searching for.\nPlease find the additional information below:\n\n" + temp.GetDetailedInfo();
             else return $"Oops, looks like there is no document with the particular Id {findId} in our register";
                
         }
@@ -44,13 +44,14 @@ namespace Register
             List<Document> temp = docList.FindAll(item => item.dateSigned == findDate);
             if (temp != null)
             {
+                
                 StringBuilder sb = new StringBuilder();
                 foreach (var document in temp)
                 {
-                    sb.AppendLine($"Here is the list of all documents were added at {findDate}:");
+                   
                     sb.AppendLine(document.GetDetailedInfo());
                 }
-                return sb.ToString();
+                return $"Here is the list of all documents were added at {findDate}:\n\n" + sb.ToString();
 
             }
             else return $"Opps, looks like there is no document were added to Register at {findDate}";
